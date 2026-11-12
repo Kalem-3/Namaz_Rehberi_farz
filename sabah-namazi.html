@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Sabah Namazı — Adım Adım Namaz Rehberi</title>
+<meta name="description" content="İmam-ı Âzam Ebû Hanîfe Hazretleri’nin kurucusu olduğu Hanefî mezhebine göre, kadın ve erkek için ayrı duruş notlarıyla, adım adım Sabah Namazı rehberi.">
+<style>
+@font-face {
+  font-family: "Amiri";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(assets/amiri.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Amiri";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(assets/amiri.woff2) format("woff2");
+}
+
+:root {
+  --ink: #1b2e28;
+  --page: #faf6ec;
+  --panel: #f1e9d8;
+  --panel-line: #ddd0b0;
+  --emerald: #1f6e55;
+  --emerald-deep: #164f3d;
+  --gold: #8f6f2a;
+  --muted: #6b6154;
+  --recite-bg: #fffdf8;
+  --recite-line: #e4d6ae;
+  --focus: #1f6e55;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ece4d2;
+    --page: #11201a;
+    --panel: #192a23;
+    --panel-line: #2c4138;
+    --emerald: #52b091;
+    --emerald-deep: #7bcbae;
+    --gold: #d1ab5c;
+    --muted: #a69c8c;
+    --recite-bg: #16251f;
+    --recite-line: #2d4139;
+    --focus: #52b091;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #ece4d2;
+  --page: #11201a;
+  --panel: #192a23;
+  --panel-line: #2c4138;
+  --emerald: #52b091;
+  --emerald-deep: #7bcbae;
+  --gold: #d1ab5c;
+  --muted: #a69c8c;
+  --recite-bg: #16251f;
+  --recite-line: #2d4139;
+  --focus: #52b091;
+}
+:root[data-theme="light"] {
+  --ink: #1b2e28;
+  --page: #faf6ec;
+  --panel: #f1e9d8;
+  --panel-line: #ddd0b0;
+  --emerald: #1f6e55;
+  --emerald-deep: #164f3d;
+  --gold: #8f6f2a;
+  --muted: #6b6154;
+  --recite-bg: #fffdf8;
+  --recite-line: #e4d6ae;
+  --focus: #1f6e55;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--page);
+  color: var(--ink);
+}
+
+body {
+  font-family: ui-serif, Georgia, "Iowan Old Style", "Noto Serif", serif;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--page);
+  border-bottom: 1px solid var(--panel-line);
+  padding: 14px 20px;
+}
+
+.topbar-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.topbar-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--emerald);
+}
+
+.gender-toggle {
+  display: inline-flex;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-radius: 999px;
+  padding: 3px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.gender-toggle button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.gender-toggle button[aria-pressed="true"] {
+  background: var(--emerald);
+  color: var(--page);
+}
+
+.gender-toggle button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+
+header.hero {
+  padding: 36px 0 18px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+h1 {
+  font-family: ui-serif, Georgia, "Iowan Old Style", "Noto Serif", serif;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  margin: 0.2em 0 0.3em;
+  text-wrap: balance;
+}
+
+.hero p.lede {
+  color: var(--muted);
+  font-size: 0.98rem;
+  max-width: 62ch;
+}
+
+.source-note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.source-note strong { color: var(--ink); }
+
+/* ---------- Section dividers (Sünnet / Farz) ---------- */
+
+.unit-divider {
+  margin: 48px 0 20px;
+  padding-top: 28px;
+  border-top: 2px solid var(--panel-line);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.unit-divider h2 {
+  font-family: ui-serif, Georgia, "Iowan Old Style", serif;
+  font-size: 1.5rem;
+  margin: 0 0 4px;
+  color: var(--emerald);
+}
+
+.unit-divider .unit-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.niyet-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--gold);
+  background: var(--panel);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.95rem;
+}
+
+.niyet-box .niyet-label {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.rekat-mark {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 36px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rekat-mark::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--panel-line);
+}
+
+/* ---------- Step ---------- */
+
+.step {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+  margin: 22px 0;
+}
+
+.step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  color: var(--emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.step-body h3 {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.02rem;
+  margin: 4px 0 6px;
+  color: var(--ink);
+}
+
+.step-body p.posture {
+  margin: 0 0 10px;
+  font-size: 0.96rem;
+}
+
+.step-body p.posture .note {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* gender-conditional spans */
+html[data-gender="erkek"] .g-kadin { display: none; }
+html[data-gender="kadin"] .g-erkek { display: none; }
+
+.g-erkek, .g-kadin {
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+/* ---------- Recitation block ---------- */
+
+.recite {
+  background: var(--recite-bg);
+  border: 1px solid var(--recite-line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-top: 4px;
+}
+
+.recite + .recite { margin-top: 12px; }
+
+.recite .recite-title {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.arabic {
+  font-family: "Amiri", "Traditional Arabic", "Scheherazade New", serif;
+  direction: rtl;
+  text-align: center;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.okunus {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 10px;
+}
+
+.okunus::before {
+  content: "Okunuşu: ";
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.meal {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.meal .meal-label {
+  font-weight: 600;
+  color: var(--emerald-deep);
+}
+
+.tesbih-count {
+  display: inline-block;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.74rem;
+  background: var(--panel);
+  color: var(--muted);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--panel-line);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+a { color: var(--emerald-deep); }
+
+@media (max-width: 480px) {
+  .arabic { font-size: 0.9rem; line-height: 1.7; }
+  .step { grid-template-columns: 28px 1fr; }
+  .step-num { width: 28px; height: 28px; font-size: 0.8rem; }
+}
+
+/* ---------- Pose illustrations ---------- */
+
+.pose-icon {
+  float: right;
+  width: 58px;
+  height: 88px;
+  margin: 0 0 10px 16px;
+  shape-outside: content-box;
+}
+
+.pose-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.pose-icon line {
+  stroke: var(--emerald);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.pose-icon .head {
+  stroke: var(--emerald);
+  stroke-width: 5;
+  fill: var(--page);
+}
+
+.pose-icon .ground {
+  stroke: var(--panel-line);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.pose-icon .legs { transform: rotate(0deg); transform-origin: 50px 70px; }
+.pose-icon .upperbody { transform: rotate(0deg); transform-origin: 50px 70px; }
+.pose-icon .arm { transform: rotate(100deg); transform-origin: 50px 27px; }
+
+html[data-gender="kadin"] .pose-icon .arm { transform: rotate(125deg); }
+
+/* resting/idle icon used on reading steps (no animation) */
+.icon-kiyam .legs { transform: rotate(0deg); }
+.icon-kiyam .upperbody { transform: rotate(0deg); }
+
+/* İftitah tekbiri: arm rises from the side to the folded position */
+.icon-tekbir .arm { animation: pose-tekbir-erkek 2.8s ease-in-out infinite; }
+html[data-gender="kadin"] .icon-tekbir .arm { animation-name: pose-tekbir-kadin; }
+@keyframes pose-tekbir-erkek { 0%, 8% { transform: rotate(0deg); } 55%, 100% { transform: rotate(100deg); } }
+@keyframes pose-tekbir-kadin { 0%, 8% { transform: rotate(0deg); } 55%, 100% { transform: rotate(125deg); } }
+
+/* Rükû: torso bows forward, arm reaches toward the knee */
+.icon-ruku .upperbody { animation: pose-ruku-body 2.8s ease-in-out infinite; }
+.icon-ruku .arm { animation: pose-ruku-arm 2.8s ease-in-out infinite; }
+@keyframes pose-ruku-body { 0%, 8% { transform: rotate(0deg); } 55%, 100% { transform: rotate(-82deg); } }
+@keyframes pose-ruku-arm { 0%, 8% { transform: rotate(100deg); } 55%, 100% { transform: rotate(168deg); } }
+
+/* Kavme: doğrulma, rising from rükû back to standing */
+.icon-kavme .upperbody { animation: pose-kavme-body 2.4s ease-in-out infinite; }
+.icon-kavme .arm { animation: pose-kavme-arm 2.4s ease-in-out infinite; }
+@keyframes pose-kavme-body { 0%, 8% { transform: rotate(-82deg); } 55%, 100% { transform: rotate(0deg); } }
+@keyframes pose-kavme-arm { 0%, 8% { transform: rotate(168deg); } 55%, 100% { transform: rotate(100deg); } }
+
+/* Secde: legs tuck under, torso folds down to the ground */
+.icon-secde .legs { animation: pose-secde-legs 3s ease-in-out infinite; }
+.icon-secde .upperbody { animation: pose-secde-body 3s ease-in-out infinite; }
+.icon-secde .arm { animation: pose-secde-arm 3s ease-in-out infinite; }
+@keyframes pose-secde-legs { 0%, 8% { transform: rotate(0deg); } 55%, 100% { transform: rotate(122deg); } }
+@keyframes pose-secde-body { 0%, 8% { transform: rotate(0deg); } 55%, 100% { transform: rotate(-158deg); } }
+@keyframes pose-secde-arm { 0%, 8% { transform: rotate(100deg); } 55%, 100% { transform: rotate(150deg); } }
+
+/* Celse: brief sit between the two secdes, legs stay tucked */
+.icon-celse .legs { transform: rotate(122deg); }
+.icon-celse .upperbody { animation: pose-celse-body 2.4s ease-in-out infinite; }
+.icon-celse .arm { animation: pose-celse-arm 2.4s ease-in-out infinite; }
+@keyframes pose-celse-body { 0%, 8% { transform: rotate(-158deg); } 55%, 100% { transform: rotate(0deg); } }
+@keyframes pose-celse-arm { 0%, 8% { transform: rotate(150deg); } 55%, 100% { transform: rotate(100deg); } }
+
+/* Kalkış: rising fully from secde to standing, for the next rekât */
+.icon-kalkis .legs { animation: pose-kalkis-legs 2.8s ease-in-out infinite; }
+.icon-kalkis .upperbody { animation: pose-kalkis-body 2.8s ease-in-out infinite; }
+.icon-kalkis .arm { animation: pose-kalkis-arm 2.8s ease-in-out infinite; }
+@keyframes pose-kalkis-legs { 0%, 8% { transform: rotate(122deg); } 55%, 100% { transform: rotate(0deg); } }
+@keyframes pose-kalkis-body { 0%, 8% { transform: rotate(-158deg); } 55%, 100% { transform: rotate(0deg); } }
+@keyframes pose-kalkis-arm { 0%, 8% { transform: rotate(150deg); } 55%, 100% { transform: rotate(100deg); } }
+
+/* Son oturuş: teşehhüd, static — same silhouette family as celse */
+.icon-oturus .legs { transform: rotate(122deg); }
+.icon-oturus .upperbody { transform: rotate(0deg); }
+
+/* Selâm: stylised head/torso turn, not anatomically literal in side view */
+.icon-selam .legs { transform: rotate(122deg); }
+.icon-selam .upperbody { animation: pose-selam-wobble 2.6s ease-in-out infinite; }
+@keyframes pose-selam-wobble { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(8deg); } 50% { transform: rotate(0deg); } 75% { transform: rotate(-8deg); } }
+
+.recite { clear: both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pose-icon [class] {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-fill-mode: forwards !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pose-icon { width: 46px; height: 70px; margin-left: 12px; }
+}
+
+.vakit-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 18px 0 2px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.vakit-nav a {
+  flex: 0 0 auto;
+  padding: 7px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-line);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.vakit-nav a.active {
+  background: var(--emerald);
+  color: var(--page);
+  border-color: var(--emerald);
+}
+</style>
+<link rel="stylesheet" href="assets/gorseller.css">
+<link rel="stylesheet" href="assets/tema.css">
+<link rel="stylesheet" href="assets/arayuz.css">
+<link rel="stylesheet" href="assets/mobil.css">
+<script>try{var d=document.documentElement;d.dataset.tema=localStorage.getItem("namaz_tema")||"zumrut";d.dataset.arapca=localStorage.getItem("namaz_arapca")||"goster";d.style.setProperty("--yazi",["0.9","1","1.12","1.25","1.4"][+(localStorage.getItem("namaz_yazi")||1)]||"1")}catch(e){document.documentElement.dataset.tema="zumrut"}</script>
+<link rel="stylesheet" href="assets/sabah-fotograflar.css">
+</head><body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-title">Sabah Namazı</span>
+    <div class="gender-toggle" role="group" aria-label="Duruş görünümü">
+      <button type="button" id="btn-erkek" aria-pressed="true">Er</button>
+      <button type="button" id="btn-kadin" aria-pressed="false">Bacı</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <nav class="vakit-nav"><a href="abdest.html">Abdest</a>
+    <a href="sabah-namazi.html" class="active">Sabah</a>
+    <a href="ogle-namazi.html">Öğle</a>
+    <a href="ikindi-namazi.html">İkindi</a>
+    <a href="aksam-namazi.html">Akşam</a>
+    <a href="yatsi-namazi.html">Yatsı</a>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">Adım Adım Farz Namaz Rehberi · 1 / 5 vakit</span>
+    <h1>Sabah Namazı</h1>
+    <p class="lede">Sabah namazının 2 rekât farzı. Türkiye’de camilerde İmam-ı Âzam Ebû Hanîfe Hazretleri’nin usulüne göre namaz kılındığı için bu rehber de o usulde hazırlanmıştır. Er veya bacı görünümünü üstteki düğmelerden seçebilirsiniz.</p>
+    <div class="source-note">
+      <strong>Kaynaklar:</strong> Kur'an-ı Kerim âyetlerinin Türkçe meali <strong>Prof. Dr. Ömer Çelik</strong> mealinden alınmıştır. Sübhâneke, Ettehiyyâtü, Salli–Bârik ve Rabbenâ dualarının Arapça metni ve anlamı Millî Eğitim Bakanlığı'nın "Namaz Duaları ve Sureleri" kaynağına dayanmaktadır. Kadın–erkek duruş farkları Diyanet İşleri Başkanlığı'nın resmî açıklamasından alınmıştır.
+    <ul class="source-links"><li><a href="https://kurul.diyanet.gov.tr/tr/fetva/kilinis-bakimindan-kadinlarin-namazi-ile-erkeklerin-namazi-arasinda-ne-gibi-farklar-bulunmaktadir/0193c42d-64a5-7ba1-9af3-f9f4a7f97245" target="_blank" rel="noopener">Diyanet — Er ve bacı duruşları</a></li><li><a href="https://kurul.diyanet.gov.tr/tr/fetva/namazda-fatihadan-sonra-okunacak-ayet-veya-sureler-icin-besmele-cekilir-mi/0193c42d-4fd1-7daa-1cd8-e3e31c2535c1" target="_blank" rel="noopener">Diyanet — Namazda besmele</a></li><li><a href="https://www.diyanet.gov.tr/icerik/10151" target="_blank" rel="noopener">Diyanet — Secdede ayakların yerleşimi</a></li></ul></div>
+  <p class="scope-note">Bu bölüm, namazı tek başına kılan kişi için hazırlanmıştır. İmama uyulduğunda kıraat uygulaması farklıdır.</p>
+  </header><section class="unit-divider">
+    <h2>2 Rekât Farz</h2>
+    <p class="unit-desc">Allah'ın kesin olarak emrettiği, kılınması zorunlu namaz.</p>
+    <div class="niyet-box">
+      <span class="niyet-label">Niyet</span>
+      <em>"Niyet ettim Allah rızası için sabah namazının farzını kılmaya."</em>
+    </div>
+  </section>
+
+  <p class="rekat-mark">1. Rekât</p>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-body">
+      <h3>İftitah Tekbiri</h3>
+      <div class="pose-icon icon-tekbir"></div>
+      <p class="posture">"Allahü ekber" diyerek eller kaldırılır —
+        <span class="g-erkek">başparmaklar kulak yumuşağına değecek şekilde, avuç içleri kıbleye dönük.</span>
+        <span class="g-kadin">eller omuz hizasına kadar kaldırılır, avuç içleri kıbleye dönük.</span>
+        Sonra eller bağlanır:
+        <span class="g-erkek">sağ el, sol elin üzerine konup göbek altında birleştirilir; sağ elle sol bilek hafifçe kavranır.</span>
+        <span class="g-kadin">sağ el, sol elin üzerine konarak göğüs hizasında birleştirilir; kavramadan, eller üst üste durur.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-body">
+      <h3>Sübhâneke, Eûzü–Besmele, Fâtiha, Zamm-ı Sûre</h3><p class="posture note audit-note">Burada İhlâs sûresi örnek olarak gösterilmiştir. Farz namazda başka bir sûre bilen kişinin, ilk rekâtta okuduğu sûreyi ikinci rekâtta bilerek tekrarlaması mekruh kabul edilir. Başka sûre bilmeyen kişi bildiği sûreyi tekrar edebilir. Bu durum namazın geçersiz olduğu anlamına gelmez.</p>
+      <div class="pose-icon icon-kiyam"></div>
+      <p class="posture note">Ayakta sırasıyla şu dualar okunur (Sübhâneke → Eûzü–Besmele → Fâtiha → İhlâs veya tercih ettiğiniz başka bir sûre).</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-body">
+      <h3>Rükû</h3>
+      <div class="pose-icon icon-ruku"></div>
+      <p class="posture">
+        "Allahü ekber" diyerek eğilinir —
+        <span class="g-erkek">sırt düz tutulur, baş sırtla aynı hizada olur, eller dizleri tam kavrar, dirsekler bedenden açık, parmaklar ayrık.</span>
+        <span class="g-kadin">sırt tam düz değil, hafifçe eğik tutulur; eller dizlere hafifçe konur, dizler hafif bükülü, dirsekler bedene yakın tutulur.</span>
+      </p>
+      <div class="recite">
+        <p class="arabic">سُبْحَانَ رَبِّيَ الْعَظِيمِ</p>
+        <p class="okunus">Sübhâne rabbiyel azîm. <span class="tesbih-count">3 kere</span></p>
+        <p class="meal"><span class="meal-label">Anlamı:</span> Yüce Rabbimi her türlü noksanlıktan tenzih ederim.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">4</span>
+    <div class="step-body">
+      <h3>Doğrulma (Kavme)</h3>
+      <div class="pose-icon icon-kavme"></div>
+      <p class="posture">Rükûdan tam doğrulup dikilirken "Semi'allâhü limen hamideh" denir; tam doğrulunca "Rabbenâ lekel hamd" denir. Kısa bir an sakin biçimde beklenir.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">5</span>
+    <div class="step-body">
+      <h3>Secde (1.)</h3>
+      <div class="pose-icon icon-secde"></div>
+      <p class="posture">
+        "Allahü ekber" diyerek secdeye varılır —
+        <span class="g-erkek">önce dizler, sonra eller, sonra burun ve alın yere konur; kollar gövdeden ve karından ayrık tutulur, dirsekler yerden kalkık durur.</span>
+        <span class="g-kadin">vücut toplu tutulur, kollar yanlara yakın durur, karın uyluklara değecek şekilde yere yakın durulur.</span>
+      </p>
+      <div class="recite">
+        <p class="arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى</p>
+        <p class="okunus">Sübhâne rabbiyel a'lâ. <span class="tesbih-count">3 kere</span></p>
+        <p class="meal"><span class="meal-label">Anlamı:</span> En yüce Rabbimi her türlü noksanlıktan tenzih ederim.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step" data-reading-role="celse">
+    <span class="step-num">6</span>
+    <div class="step-body">
+      <h3>Celse (İki Secde Arası Oturuş)</h3>
+      <div class="pose-icon icon-celse"></div>
+      <p class="posture">
+        "Allahü ekber" diyerek doğrulup kısaca oturulur —
+        <span class="g-erkek">sol ayak yatık şekilde altına alınıp üzerine oturulur, sağ ayağın parmakları kıbleye dönük dik tutulur.</span>
+        <span class="g-kadin">her iki ayak da sağ tarafa yatık şekilde yere yaslanır, bu şekilde oturulur.</span>
+      </p>
+<p class="sitting-note">Bu, iki secde arasındaki kısa oturuştur. Bu oturuşta Ettehiyyâtü, Salli–Bârik ve Rabbenâ duaları okunmaz. Ardından ikinci secdeye gidilir.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">7</span>
+    <div class="step-body">
+      <h3>Secde (2.)</h3>
+      <div class="pose-icon icon-secde"></div>
+      <p class="posture">"Allahü ekber" diyerek tekrar secdeye varılır, aynı duruşla.</p>
+      <div class="recite">
+        <p class="arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى</p>
+        <p class="okunus">Sübhâne rabbiyel a'lâ. <span class="tesbih-count">3 kere</span></p>
+        <p class="meal"><span class="meal-label">Anlamı:</span> En yüce Rabbimi her türlü noksanlıktan tenzih ederim.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="rekat-mark">2. Rekât</p>
+
+  <div class="step">
+    <span class="step-num">8</span>
+    <div class="step-body">
+      <h3>Kalkış, Besmele, Fâtiha, Zamm-ı Sûre</h3><p class="posture note audit-note">Burada İhlâs sûresi örnek olarak gösterilmiştir. Farz namazda başka bir sûre bilen kişinin, ilk rekâtta okuduğu sûreyi ikinci rekâtta bilerek tekrarlaması mekruh kabul edilir. Başka sûre bilmeyen kişi bildiği sûreyi tekrar edebilir. Bu durum namazın geçersiz olduğu anlamına gelmez.</p>
+      <div class="pose-icon icon-kalkis"></div>
+      <p class="posture note">“Allahü ekber” diyerek ikinci rekâta kalkılır ve eller bağlanır. Sübhâneke ve Eûzü tekrar edilmez. Besmele çekilir; ardından Fâtiha ve bir sûre okunur.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">9</span>
+    <div class="step-body">
+      <h3>Rükû</h3>
+      <div class="pose-icon icon-ruku"></div>
+      <p class="posture">
+        "Allahü ekber" diyerek eğilinir —
+        <span class="g-erkek">sırt düz tutulur, baş sırtla aynı hizada olur, eller dizleri tam kavrar, dirsekler bedenden açık, parmaklar ayrık.</span>
+        <span class="g-kadin">sırt tam düz değil, hafifçe eğik tutulur; eller dizlere hafifçe konur, dizler hafif bükülü, dirsekler bedene yakın tutulur.</span>
+      </p>
+      <div class="recite">
+        <p class="arabic">سُبْحَانَ رَبِّيَ الْعَظِيمِ</p>
+        <p class="okunus">Sübhâne rabbiyel azîm. <span class="tesbih-count">3 kere</span></p>
+        <p class="meal"><span class="meal-label">Anlamı:</span> Yüce Rabbimi her türlü noksanlıktan tenzih ederim.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">10</span>
+    <div class="step-body">
+      <h3>Doğrulma (Kavme)</h3>
+      <div class="pose-icon icon-kavme"></div>
+      <p class="posture">Rükûdan tam doğrulup dikilirken "Semi'allâhü limen hamideh" denir; tam doğrulunca "Rabbenâ lekel hamd" denir. Kısa bir an sakin biçimde beklenir.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">11</span>
+    <div class="step-body">
+      <h3>Secde (1.)</h3>
+      <div class="pose-icon icon-secde"></div>
+      <p class="posture">
+        "Allahü ekber" diyerek secdeye varılır —
+        <span class="g-erkek">önce dizler, sonra eller, sonra burun ve alın yere konur; kollar gövdeden ve karından ayrık tutulur, dirsekler yerden kalkık durur.</span>
+        <span class="g-kadin">vücut toplu tutulur, kollar yanlara yakın durur, karın uyluklara değecek şekilde yere yakın durulur.</span>
+      </p>
+      <div class="recite">
+        <p class="arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى</p>
+        <p class="okunus">Sübhâne rabbiyel a'lâ. <span class="tesbih-count">3 kere</span></p>
+        <p class="meal"><span class="meal-label">Anlamı:</span> En yüce Rabbimi her türlü noksanlıktan tenzih ederim.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step" data-reading-role="celse">
+    <span class="step-num">12</span>
+    <div class="step-body">
+      <h3>Celse (İki Secde Arası Oturuş)</h3>
+      <div class="pose-icon icon-celse"></div>
+      <p class="posture">
+        "Allahü ekber" diyerek doğrulup kısaca oturulur —
+        <span class="g-erkek">sol ayak yatık şekilde altına alınıp üzerine oturulur, sağ ayağın parmakları kıbleye dönük dik tutulur.</span>
+        <span class="g-kadin">her iki ayak da sağ tarafa yatık şekilde yere yaslanır, bu şekilde oturulur.</span>
+      </p>
+<p class="sitting-note">Bu, iki secde arasındaki kısa oturuştur. Bu oturuşta Ettehiyyâtü, Salli–Bârik ve Rabbenâ duaları okunmaz. Ardından ikinci secdeye gidilir.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">13</span>
+    <div class="step-body">
+      <h3>Secde (2.)</h3>
+      <div class="pose-icon icon-secde"></div>
+      <p class="posture">"Allahü ekber" diyerek tekrar secdeye varılır, aynı duruşla.</p>
+      <div class="recite">
+        <p class="arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى</p>
+        <p class="okunus">Sübhâne rabbiyel a'lâ. <span class="tesbih-count">3 kere</span></p>
+        <p class="meal"><span class="meal-label">Anlamı:</span> En yüce Rabbimi her türlü noksanlıktan tenzih ederim.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step" data-reading-role="final-sitting">
+    <span class="step-num">14</span>
+    <div class="step-body">
+      <h3>Son Oturuş — Ettehiyyâtü, Salli–Bârik, Rabbenâ Duaları</h3>
+      <div class="pose-icon icon-oturus"></div>
+      <p class="posture note">“Allahü ekber” diyerek son oturuşa geçilir. Ettehiyyâtü, ardından Salli–Bârik ve Rabbenâ duaları okunur.</p>
+<p class="sitting-note">Bu, ikinci rekâtın ikinci secdesinden sonraki son oturuştur. Ettehiyyâtü, Salli–Bârik ve Rabbenâ duaları burada okunur.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">15</span>
+    <div class="step-body">
+      <h3>Selâm</h3>
+      <div class="pose-icon icon-selam"></div>
+      <p class="posture">Sağa ve sola dönerek "Esselâmü aleyküm ve rahmetullah" denir. Sabah namazı tamamlanmış olur.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var html = document.documentElement;
+  var btnErkek = document.getElementById("btn-erkek");
+  var btnKadin = document.getElementById("btn-kadin");
+
+  function setGender(g) {
+    html.setAttribute("data-gender", g);
+    btnErkek.setAttribute("aria-pressed", String(g === "erkek"));
+    btnKadin.setAttribute("aria-pressed", String(g === "kadin"));
+    try { localStorage.setItem("namaz_gender", g); } catch (e) {}
+  }
+
+  btnErkek.addEventListener("click", function () { setGender("erkek"); });
+  btnKadin.addEventListener("click", function () { setGender("kadin"); });
+
+  var saved = null;
+  try { saved = localStorage.getItem("namaz_gender"); } catch (e) {}
+  setGender(saved === "kadin" ? "kadin" : "erkek");
+})();
+</script>
+
+<script src="assets/dualar.js"></script>
+<script src="assets/sabah-fotograflar.js"></script>
+<script src="assets/sabah-fotograflar-kadin.js"></script>
+<script src="assets/sabah-gorseller.js"></script>
+<script src="assets/arayuz.js"></script>
+<script src="assets/mobil.js"></script>
+</body></html>

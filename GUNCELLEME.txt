@@ -1,0 +1,97 @@
+FARZ SÜRÜMÜ V2 — TELEFON DÜZENİ VE OKUMA KOLAYLIĞI
+
+Yeni dosyalar: assets/mobil.css ve assets/mobil.js (bütün sayfalara eklendi).
+- Dualar satır satır: Fâtiha'nın her âyeti, Ettehiyyâtü ve diğer duaların her cümlesi ayrı satırda. Anlam ve Arapça metin de satırlara bölündü.
+- Yazılar büyüdü: okunuş, anlam ve açıklamalar bilgisayarda ve telefonda büyütüldü. Soluk gri yazılar koyulaştırıldı.
+- Yazı boyutu: Görünüm panelinde A− / A+ düğmeleri var (%90–%140). Seçim hatırlanır.
+- Her adım iki bölüme ayrıldı: "Ne yapıyorum?" (duruş, fotoğraflar, açıklama) ve "Ne söylüyorum?" (dua kartları). Kısa oturuşta "dua okunmaz" yazar.
+- Kısa sözlere de kart eklendi: Tekbir (Allâhü ekber), kavme (Semi'allâhü limen hamideh / Rabbenâ lekel hamd) ve selâm (Esselâmü aleyküm ve rahmetullâh). Her kartta okunuş, anlam ve Arapça var.
+- Telefon düzeni:
+  · Konum çubuğu tek satıra indi; aşağı kaydırınca daha da küçülür.
+  · Ana fotoğraf ekranın üçte birine sığacak kadar küçüldü; dokununca büyür.
+  · Detay fotoğrafları yan yana kaydırılan bir şerit oldu.
+  · Ekranı sağa/sola kaydırarak önceki/sonraki adıma geçilir.
+  · "Tüm adımları tek sayfada göster" düğmesi Görünüm paneline taşındı.
+- Kontrol: Beş sayfa Er ve Bacı görünümünde, telefon ve bilgisayar boyutunda denendi. Dualar her rekâtta aynı yerde; kırık görsel ve hata yok.
+
+FARZ SÜRÜMÜ (V21 tabanlı)
+
+Bu paket ana rehberin bir kopyasıdır. İçinde yalnızca beş vaktin farz namazları var; sünnetler ve vitir çıkarıldı.
+- Sabah 2, öğle 4, ikindi 4, akşam 3, yatsı 4 rekât farz. Er ve Bacı görünümü, fotoğraflar, konum çubuğu, renk temaları ve Arapça göster/gizle anahtarı ana rehberle aynıdır.
+- Farz artık sayfanın ilk bölümü olduğu için iftitah tekbirinin ayrıntılı açıklaması farza taşındı. Besmele kartı da farzın 2., 3. ve 4. rekâtlarında kendi başına görünür hale getirildi (önceden sünnetteki karttan alınıyordu).
+- Başlıklar, açıklamalar ve ana sayfadaki kartlar farza göre düzenlendi. Menüde "Yatsı ve Vitir" yerine "Yatsı" yazıyor.
+- Kullanılmayan sünnet ve vitir fotoğrafları pakete konmadı.
+- Kontrol: Beş sayfa Er ve Bacı görünümünde açıldı. Her rekâtta dualar videolardaki farzla aynı; kırık görsel ve hata yok.
+- Kurulum: Bu paketi ayrı bir GitHub deposuna yükleyin. Ana rehberin dosyalarının üzerine yazmayın.
+
+V21 — DUA KONTROLÜ VE YENİ ARAYÜZ
+
+Kontrol:
+- Er ve bacı videolarındaki her rekâtın ekran metni, sitedeki adımlarla tek tek karşılaştırıldı. Beş vakit ve vitirde dualar doğru yerde. Kılınış videolarla aynı; düzeltilmesi gereken bir şey çıkmadı.
+- Otomatik tarama: 315 adım, Er ve Bacı. Her rekâtta 1 rükû, 2 secde ve 1 kısa oturuş var. Kısa oturuşlarda dua kutusu yok. Er ve Bacı'da dua sırası birebir aynı.
+
+Arayüz (assets/arayuz.css, assets/arayuz.js — bütün sayfalara eklendi):
+- Konum çubuğu: Üstte sabit duruyor. Bölüm sekmeleri (İlk Sünnet / Farz / Son Sünnet / Vitir), tesbih tanesi şeklinde rekât düğmeleri, o rekâtın adımları ve ilerleme çizgisi var. Hepsine tıklayarak gidilebiliyor. Bilgisayarda sol/sağ ok tuşları adım değiştirir.
+- Daha sade ekran: Üstteki büyük kutu küçüldü. Niyet yalnızca bölümün ilk adımında görünüyor. Büyük harfli etiketler sade cümlelere çevrildi. Telefonda "Sonraki adım" düğmesi büyüdü.
+- Görünüm paneli: Dört renk teması var: Zümrüt, İznik, Gül kurusu, Gece. Bir de "Arapça metni göster" anahtarı var; okunuş ve anlam her zaman görünür. Seçimler tarayıcıda hatırlanır.
+- Dua metinleri, adımlar ve fotoğraflar değiştirilmedi. "Adıma git" listesi gizlendi; yerine konum çubuğu geldi.
+
+V20 — BACI GÖRÜNÜMÜ FOTOĞRAFLARI (BEŞ VAKİT + VİTİR)
+
+- Bacı görünümüne, İslam ve İhsan'ın "Kadınlar İçin ... Namazının Kılınışı" videolarından görseller eklendi: sabah, öğle, ikindi, akşam, yatsı ve vitir.
+- Her vaktin her rekâtı için kıyam, tekbir, rükû, kavme, 1. secde, celse, 2. secde, oturuş ve sağa/sola selâm görselleri o rekâtın kendi görüntüsünden alındı. Vitirde kunût tekbiri ve kunût kıyamı da eklendi.
+- Detay görselleri:
+  · Videodaki yakın planlar: ellerin kaldırılması, ellerin göğüste bağlanması, celse ve oturuşta ayakların yerleşimi.
+  · Aynı karelerden yakınlaştırılmış kesitler: rükûda sırt ve baş, rükûda eller ve dizler, kavmede kollar, secdede baş ve eller, oturuşta eller, selâmda başın çevrilmesi.
+- Videolarda duruşların sırası otomatik olarak çıkarıldı. Her videoda rekât, oturuş ve selâm sayısı rehberdeki sırayla birebir eşleşti.
+- Yeni dosyalar: assets/<vakit>-fotograflar-kadin/ klasörleri ve assets/<vakit>-fotograflar-kadin.js dosyaları. Görüntüleyici dosyaları (assets/*-gorseller.js), bacı görünümünde fotoğrafları gösterecek şekilde güncellendi.
+- Er görünümü, dua metinleri ve adımlar değiştirilmedi.
+- Kontrol: Beş sayfa hem Er hem Bacı görünümünde tarayıcıda açıldı. Bütün adımlarda fotoğraf ve iki detay görseli var. Kırık görsel ve konsol hatası yok.
+
+V19 — YATSI VE VİTİR FOTOĞRAFLI DÜZENLEME
+
+- Yatsı ve Vitir sayfası sabah, öğle ve akşam sayfalarıyla aynı yapıya getirildi. İlk sünnet 34, farz 28, son sünnet 15, vitir 23 adım (toplam 100).
+- Sıralama, "Yatsı Namazı Nasıl Kılınır?" ve "Vitir Namazı Nasıl Kılınır?" videolarındaki ekran metinleriyle karşılaştırıldı:
+  · İlk sünnet (gayr-i müekked): Birinci oturuşta Ettehiyyâtü, Salli ve Bârik okunur. 3. rekâtta Sübhâneke ve Eûzü–Besmele yeniden okunur.
+  · Farz: Birinci oturuşta yalnızca Ettehiyyâtü okunur. 3. ve 4. rekâtlarda yalnızca Besmele ve Fâtiha okunur.
+  · Vitir: Üç rekâtta da sûre okunur. 3. rekâtta sûreden sonra kunût tekbiri alınır ve Kunût duaları okunur. Kunût adımına videodaki kunût tekbiri fotoğrafı eklendi.
+- Yatsı videosundan 141, vitir videosundan 48 fotoğraf alındı (assets/yatsi-fotograflar/). Her rekâtın fotoğrafı o rekâtın kendi görüntüsünden seçildi.
+- Yeni dosyalar: assets/yatsi-fotograflar.js, assets/yatsi-gorseller.js. Mevcut Kunût duası metinleri değiştirilmedi.
+- Kontrol: Sayfa tarayıcıda açıldı. 100 adım ve 319 görsel hatasız yüklendi. Konsolda hata yok.
+
+V18 — İKİNDİ EKLENDİ, AKŞAM NAMAZI FOTOĞRAFLI DÜZENLEME
+
+İkindi (ChatGPT ile hazırlanan V17'den alındı, kontrol edildi):
+- Sıralama Hanefî usulüne uygundur. Sünnetin (gayr-i müekked) birinci oturuşunda Ettehiyyâtü ve Salli–Bârik okunur. 3. rekâtta Sübhâneke ve Eûzü–Besmele yeniden okunur. Farzın birinci oturuşunda yalnızca Ettehiyyâtü okunur. Farzın 3. ve 4. rekâtlarında yalnızca Besmele ve Fâtiha okunur.
+- 25 fotoğrafın duruşları doğru. Sağa ve sola selâm doğru yönde. Sayfa hatasız açılıyor (62 adım, 195 görsel).
+- Fark: İkindide aynı 25 fotoğraf bütün rekâtlarda tekrar ediyor. Öğle ve akşamda ise her rekâtın kendi fotoğrafı var.
+- Eklenen dosyalar: ikindi-namazi.html, assets/ikindi-fotograflar/, assets/ikindi-fotograflar.js, assets/ikindi-gorseller.js, assets/ikindi-fotograflar.css. O ZIP'teki eski öğle sayfası alınmadı; V17 öğle sayfası korundu.
+
+Akşam:
+- Sayfa sabah ve öğle sayfalarıyla aynı yapıya getirildi. Farz 27 adım, sünnet 15 adım (toplam 42).
+- Sıralama, "Akşam Namazı Nasıl Kılınır?" videosundaki ekran metinleriyle karşılaştırıldı. Farzın 3. rekâtında Besmele ve Fâtiha okunur, sûre okunmaz. Birinci oturuşta yalnızca Ettehiyyâtü okunur.
+- Videodan 75 fotoğraf alındı (assets/aksam-fotograflar/). Her rekâtın kıyam, rükû, kavme, secde, celse, oturuş ve selâm fotoğrafı o rekâtın kendi görüntüsünden seçildi.
+- Yeni dosyalar: assets/aksam-fotograflar.js, assets/aksam-gorseller.js.
+- Kontrol: Sayfa tarayıcıda açıldı. 42 adım ve 135 görsel hatasız yüklendi. Konsolda hata yok.
+
+
+V17 — ÖĞLE NAMAZI FOTOĞRAFLI DÜZENLEME
+
+ZIP dosyasını çıkarıp index.html dosyasını açabilirsiniz. GitHub Pages için ZIP’in içindeki dosyaları, index.html bulunan depo klasörüne yükleyin; ZIP dosyasının kendisini yüklemeyin.
+
+Öğle sayfası sabah sayfasıyla aynı yapıya getirildi:
+- Birleşik hareketler ayrıldı. Rükû, kavme, 1. secde, celse ve 2. secde artık ayrı adımlardır. İlk sünnet 34 adım, farz 28 adım, son sünnet 15 adımdır (toplam 77).
+- İki secde arasındaki kısa oturuşlarda dua kutusu yoktur.
+- Birinci oturuşta (ilk sünnetin ve farzın 2. rekâtı) yalnızca Ettehiyyâtü vardır. Son oturuşlarda Ettehiyyâtü, Salli–Bârik ve Rabbenâ duaları yer alır.
+- Sıralama, “Öğle Namazı Nasıl Kılınır?” videosundaki ekran metinleriyle karşılaştırıldı. İlk sünnetin 3. ve 4. rekâtlarında Besmele + Fâtiha + sûre okunur. Farzın 3. ve 4. rekâtlarında Besmele + Fâtiha okunur, sûre okunmaz.
+
+Fotoğraflar (Er görünümü):
+- Videodan 140 fotoğraf alındı (assets/ogle-fotograflar/). Her sünnet ve farzın her rekâtındaki kıyam, rükû, kavme, 1. secde, celse ve 2. secde, o rekâtın kendi görüntüsünden seçildi. Birinci oturuş, son oturuş ve sağa/sola selâm da kendi rekâtlarından alındı.
+- Yakın planlar videodaki küçük pencereden alındı: tekbir, el bağlama, yandan kıyam, rükû, secde ve celse ayakları, oturuşta işaret parmağı ve selâm.
+- Yakın planı videoda yalnızca 1. rekâtta bulunan görüntüler (el bağlama, yandan kıyam) aynı namazın sonraki rekâtlarında da kullanıldı. Oturuşun yandan görünümü, aynı namazın son oturuşundan alındı.
+
+Yeni dosyalar: assets/ogle-fotograflar.js, assets/ogle-gorseller.js, assets/ogle-fotograflar/*.jpg
+Mevcut dua, okunuş ve meal metinleri değiştirilmedi. Diğer vakitlerin sayfaları ve sabah sayfası değiştirilmedi.
+
+Kontrol: Sayfa tarayıcıda açıldı. 77 adımın tamamı ve 244 görsel hatasız yüklendi. Konsolda hata yok.
+Videonun ses kaydındaki okunuşlar kelime kelime denetlenmedi. Sıralama, videodaki ekran metinlerine ve görüntülere göre yapıldı.

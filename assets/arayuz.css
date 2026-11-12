@@ -1,0 +1,211 @@
+/* Namaz Rehberi — arayüz katmanı: renk temaları, konum çubuğu (tesbih), görünüm paneli.
+   tema.css'ten sonra yüklenir; renkler yalnızca buradaki değişkenlerden gelir. */
+
+/* ---------- Temalar ---------- */
+html[data-tema]{
+  --t-bg:#F1EFE6; --t-surface:#FBFAF5; --t-sunk:#E8E6DA; --t-line:#D9D6C6;
+  --t-ink:#1D2E26; --t-muted:#5F6B60; --t-accent:#1E5A44; --t-accent-ink:#FFFFFF;
+  --t-gold:#A8803F; --t-hero:#163F31; --t-hero-ink:#F4F1E6; --t-hero-muted:#BFD0C5;
+  --t-bead:#1E5A44; --t-bead-now:#A8803F; --t-photo:#E9E7DD;
+  /* sayfaların kendi değişkenleri */
+  --page:var(--t-bg); --panel:var(--t-sunk); --panel-line:var(--t-line); --ink:var(--t-ink);
+  --muted:var(--t-muted); --emerald:var(--t-accent); --emerald-deep:var(--t-accent);
+  --gold:var(--t-gold); --recite-bg:var(--t-surface); --recite-line:var(--t-line); --focus:var(--t-accent);
+  color-scheme:light;
+}
+html[data-tema="iznik"]{
+  --t-bg:#EEF2F6; --t-surface:#FFFFFF; --t-sunk:#E2E8F0; --t-line:#CBD5E1;
+  --t-ink:#16213A; --t-muted:#53607A; --t-accent:#23508F; --t-accent-ink:#FFFFFF;
+  --t-gold:#2C8A86; --t-hero:#1B3A68; --t-hero-ink:#F2F6FB; --t-hero-muted:#BACBE3;
+  --t-bead:#23508F; --t-bead-now:#C2412D; --t-photo:#E6EBF1;
+}
+html[data-tema="gul"]{
+  --t-bg:#F6EFEC; --t-surface:#FFFBF9; --t-sunk:#EEE2DD; --t-line:#DDCAC3;
+  --t-ink:#381B20; --t-muted:#74575B; --t-accent:#7A2232; --t-accent-ink:#FFFFFF;
+  --t-gold:#A7773F; --t-hero:#5E1A26; --t-hero-ink:#FBF1EC; --t-hero-muted:#E3C2C3;
+  --t-bead:#7A2232; --t-bead-now:#A7773F; --t-photo:#F0E6E1;
+}
+html[data-tema="gece"]{
+  --t-bg:#0F181B; --t-surface:#17232A; --t-sunk:#1D2B32; --t-line:#2C3D45;
+  --t-ink:#E8E3D4; --t-muted:#A3ACA4; --t-accent:#86C7AC; --t-accent-ink:#0F181B;
+  --t-gold:#D8B56E; --t-hero:#132027; --t-hero-ink:#EFE9DA; --t-hero-muted:#A9B7B0;
+  --t-bead:#86C7AC; --t-bead-now:#D8B56E; --t-photo:#1A262C;
+  color-scheme:dark;
+}
+
+/* ---------- Genel renkler (tema.css'teki sabit renklerin yerine) ---------- */
+html[data-tema] body{background:var(--t-bg);color:var(--t-ink)}
+html[data-tema] a{color:var(--t-accent)}
+html[data-tema] .topbar{background:color-mix(in srgb,var(--t-bg) 94%,transparent);border-color:var(--t-line)}
+html[data-tema] .topbar-title{color:var(--t-ink)}
+html[data-tema] .gender-toggle{border-color:var(--t-line);background:var(--t-surface)}
+html[data-tema] .gender-toggle button{color:var(--t-muted)}
+html[data-tema] .gender-toggle button[aria-pressed=true]{background:var(--t-accent);color:var(--t-accent-ink)}
+html[data-tema] .vakit-nav{border-color:var(--t-line)}
+html[data-tema] .vakit-nav a{color:var(--t-muted)}
+html[data-tema] .vakit-nav a.active{color:var(--t-ink);border-color:var(--t-gold)}
+html[data-tema] .hero{background:var(--t-hero);color:var(--t-hero-ink)}
+html[data-tema] .hero h1{color:var(--t-hero-ink)}
+html[data-tema] .hero .eyebrow,html[data-tema] .hero .source-details{color:var(--t-hero-muted)}
+html[data-tema] .hero p.lede,html[data-tema] .hero .scope-note{color:var(--t-hero-muted)!important}
+html[data-tema] .hero .source-note{background:var(--t-surface);color:var(--t-muted);border-color:var(--t-line)}
+html[data-tema] .source-links a{color:var(--t-accent)}
+html[data-tema] .guide-context{background:var(--t-sunk);border-color:var(--t-gold);color:var(--t-muted)}
+html[data-tema] .guide-context strong{color:var(--t-ink)}
+html[data-tema] .guide-context .niyet-label{color:var(--t-gold)}
+html[data-tema] .step .step-body h3{color:var(--t-ink)}
+html[data-tema] .pose-block,html[data-tema] .recite,html[data-tema] .movement-sequence{background:var(--t-surface);border-color:var(--t-line)}
+html[data-tema] .movement-sequence>h4{color:var(--t-ink)}
+html[data-tema] .pose-tabs button{background:transparent;color:var(--t-muted);border-color:var(--t-line)}
+html[data-tema] .pose-tabs button[aria-pressed=true]{color:var(--t-accent);border-color:var(--t-accent)}
+html[data-tema] .pose-main figcaption,html[data-tema] .movement-cards figcaption{color:var(--t-muted)}
+html[data-tema] .detail-card{border-color:var(--t-line)}
+html[data-tema] .detail-card h4{color:var(--t-accent)}
+html[data-tema] .detail-card p,html[data-tema] .pose-tip{color:var(--t-muted)}
+html[data-tema] .step-body p.posture{color:var(--t-ink)}
+html[data-tema] .step-body p.posture.note{color:var(--t-muted)}
+html[data-tema] .audit-note{background:var(--t-sunk);border-color:var(--t-gold)}
+html[data-tema] .sitting-note{background:var(--t-sunk);border-color:var(--t-gold);color:var(--t-ink)}
+html[data-tema] .read-label{color:var(--t-gold)}
+html[data-tema] .recite .recite-title{color:var(--t-accent)}
+html[data-tema] .recite .okunus{color:var(--t-ink)}
+html[data-tema] .recite .okunus::before,html[data-tema] .recite .meal .meal-label{color:var(--t-muted)}
+html[data-tema] .recite .meal{color:var(--t-muted);border-color:var(--t-line)}
+html[data-tema] .recite .arabic{color:var(--t-ink);border-color:var(--t-line)}
+html[data-tema] .tesbih-count{border-color:var(--t-line);color:var(--t-accent)}
+html[data-tema] .guide-nav{background:color-mix(in srgb,var(--t-bg) 94%,transparent);border-color:var(--t-line)}
+html[data-tema] .guide-nav [data-nav=next]{background:var(--t-accent);border-color:var(--t-accent);color:var(--t-accent-ink)}
+html[data-tema] .guide-nav [data-nav=prev]{color:var(--t-accent);border-color:var(--t-line);background:transparent}
+html[data-tema] .guide-counter{color:var(--t-muted)}
+html[data-tema] .art-dialog{background:var(--t-surface);color:var(--t-ink);border-color:var(--t-line)}
+html[data-tema] .art-dialog-head button{color:var(--t-accent);border-color:var(--t-line)}
+html[data-tema] .photo-frame,html[data-tema] .photo-dialog .art-frame,html[data-tema] .art-frame{background:var(--t-photo)!important}
+html[data-tema] .guide-toggle{color:var(--t-accent);border-color:var(--t-line)}
+/* abdest */
+html[data-tema] .abdest-intro,html[data-tema] .abdest-basics{background:var(--t-sunk);color:var(--t-muted)}
+html[data-tema] .abdest-intro strong{color:var(--t-ink)}
+html[data-tema] .abdest-done{background:var(--t-sunk);border-color:var(--t-line)}
+html[data-tema] .abdest-badges span{background:var(--t-surface);border-color:var(--t-line);color:var(--t-gold)}
+html[data-tema] .abdest-return{background:var(--t-accent);color:var(--t-accent-ink)}
+/* ana sayfa */
+html[data-tema] body.home header{border-color:var(--t-line)}
+html[data-tema] body.home header b{color:var(--t-ink)}
+html[data-tema] body.home header b::before{border-color:var(--t-gold);box-shadow:inset 0 0 0 4px var(--t-bg)}
+html[data-tema] body.home header span,html[data-tema] body.home .eyebrow{color:var(--t-muted)}
+html[data-tema] body.home h1{color:var(--t-ink)}
+html[data-tema] body.home .intro p,html[data-tema] body.home .intro p.method-note{color:var(--t-muted);border-color:var(--t-line)}
+html[data-tema] body.home .cards{border-color:var(--t-line)}
+html[data-tema] body.home .card,html[data-tema] body.home .card:first-child{color:var(--t-ink);border-color:var(--t-line)}
+html[data-tema] body.home .card h2{color:var(--t-ink)}
+html[data-tema] body.home .card small,html[data-tema] body.home .card span{color:var(--t-muted)}
+html[data-tema] body.home .card strong{color:var(--t-gold)}
+html[data-tema] body.home .card:hover,html[data-tema] body.home .card:first-child:hover{background:var(--t-sunk);border-color:var(--t-line)}
+html[data-tema] body.home .card:hover h2,html[data-tema] body.home .card:hover strong{color:var(--t-accent)}
+html[data-tema] body.home .note{border-color:var(--t-line);color:var(--t-muted)}
+html[data-tema] body.home .note b{color:var(--t-accent)}
+html[data-tema="gece"] .hero-person,html[data-tema="gece"] .home-arch{filter:brightness(.92)}
+
+/* ---------- Arapça göster/gizle ---------- */
+html[data-arapca="gizle"] .recite .arabic{display:none}
+
+/* ---------- Okunuş etiketlerini sade yazı ---------- */
+.read-label{text-transform:none!important;letter-spacing:0!important;font:600 14px/1.5 system-ui!important}
+.supplement .read-label{font:600 13px/1.5 system-ui!important;margin:22px 0 10px!important}
+.pose-label{display:none}
+.pose-tabs{padding-top:18px!important}
+
+/* ---------- Kısa üst bölüm ---------- */
+body.has-konum .hero{padding:22px 26px!important;margin-top:16px}
+body.has-konum .hero .eyebrow{display:none}
+body.has-konum .hero h1{font-size:clamp(28px,3.4vw,38px)!important;margin:0 0 8px!important}
+body.has-konum .hero p.lede{font-size:14px!important;line-height:1.75;margin:0;max-width:70ch}
+body.has-konum .hero .source-details{margin-top:12px}
+body.has-konum .guide-tools{border:0;padding:6px 0 0;margin:0 0 6px;justify-content:flex-end}
+body.has-konum .guide-tools label{display:none}
+body.has-konum .rekat-caption,body.has-konum .guide-context>strong{display:none}
+body.has-konum .guide-context.konum-gizli{height:0;min-height:0;padding:0!important;margin:0!important;border:0!important;overflow:hidden}
+body.has-konum .guide-context{scroll-margin-top:calc(var(--konum-top,64px) + var(--konum-h,120px) + 14px)}
+body.guide-mode .adim-ust{display:none}
+
+/* ---------- Görünüm düğmesi ve paneli ---------- */
+.gorunum{position:relative}
+.gorunum>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:6px 12px;border:1px solid var(--t-line);border-radius:6px;background:var(--t-surface);color:var(--t-ink);font:500 13px system-ui}
+.gorunum>summary::-webkit-details-marker{display:none}
+.gorunum>summary::before{content:'';width:14px;height:14px;border-radius:50%;background:conic-gradient(var(--t-accent) 0 50%,var(--t-gold) 0 100%)}
+.gorunum[open]>summary{border-color:var(--t-accent)}
+.gorunum-panel{position:absolute;right:0;top:calc(100% + 8px);z-index:40;width:min(300px,86vw);padding:18px;background:var(--t-surface);border:1px solid var(--t-line);border-radius:10px;box-shadow:0 18px 40px rgb(0 0 0 / .14);color:var(--t-ink);font:400 14px/1.5 system-ui}
+.gorunum-panel h2{font:600 14px system-ui;margin:0 0 10px}
+.gorunum-panel h2+p{margin:-6px 0 10px;color:var(--t-muted);font-size:12px}
+.tema-secim{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 18px}
+.tema-secim button{display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid var(--t-line);border-radius:8px;background:transparent;color:var(--t-ink);font:500 13px system-ui;cursor:pointer;text-align:left}
+.tema-secim button[aria-pressed=true]{border-color:var(--t-accent);box-shadow:inset 0 0 0 1px var(--t-accent)}
+.tema-ornek{width:22px;height:22px;border-radius:50%;flex:0 0 22px;border:1px solid rgb(0 0 0 / .12)}
+.anahtar{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer}
+.anahtar input{appearance:none;width:42px;height:24px;border-radius:12px;background:var(--t-line);position:relative;cursor:pointer;flex:0 0 42px;margin:0;transition:background .15s}
+.anahtar input::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .15s}
+.anahtar input:checked{background:var(--t-accent)}
+.anahtar input:checked::after{transform:translateX(18px)}
+.anahtar input:focus-visible,.tema-secim button:focus-visible,.gorunum>summary:focus-visible{outline:2px solid var(--t-accent);outline-offset:2px}
+body.home header .gorunum{margin-left:auto}
+
+/* ---------- Konum çubuğu: tesbih ---------- */
+.konum{position:sticky;z-index:9;top:var(--konum-top,64px);margin:14px 0 22px;padding:12px 16px 0;background:color-mix(in srgb,var(--t-bg) 96%,transparent);backdrop-filter:blur(10px);border:1px solid var(--t-line);border-radius:10px;overflow:hidden}
+.konum-bolumler{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 0 10px}
+.konum-bolumler::-webkit-scrollbar{display:none}
+.konum-bolumler button{flex:0 0 auto;min-height:36px;padding:6px 14px;border:0;border-radius:18px;background:transparent;color:var(--t-muted);font:500 14px system-ui;cursor:pointer;white-space:nowrap}
+.konum-bolumler button[aria-current=true]{background:var(--t-accent);color:var(--t-accent-ink)}
+.konum-bolumler button:not([aria-current=true]):hover{background:var(--t-sunk);color:var(--t-ink)}
+.konum-satir{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:12px}
+.tesbih{display:flex;align-items:center;gap:0;position:relative}
+.tesbih::before{content:'';position:absolute;left:14px;right:14px;top:50%;height:2px;background:var(--t-line)}
+.tesbih button{position:relative;width:34px;height:34px;margin:0 4px;border-radius:50%;border:2px solid var(--t-bead);background:var(--t-surface);color:var(--t-bead);font:700 13px system-ui;cursor:pointer;display:grid;place-items:center;padding:0;transition:background .15s,color .15s,transform .15s}
+.tesbih button.gecti{background:var(--t-bead);color:var(--t-accent-ink)}
+.tesbih button[aria-current=true]{background:var(--t-bead-now);border-color:var(--t-bead-now);color:#fff;transform:scale(1.12)}
+.konum-yazi{min-width:0;flex:1}
+.konum-yazi b{display:block;font:400 19px/1.3 Georgia,'Times New Roman',serif;color:var(--t-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.konum-yazi span{font:400 12px/1.5 system-ui;color:var(--t-muted)}
+.konum-adimlar{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.konum-adimlar button{width:11px;height:11px;border-radius:50%;padding:0;border:1.5px solid var(--t-bead);background:transparent;cursor:pointer}
+.konum-adimlar button.gecti{background:var(--t-bead);opacity:.55}
+.konum-adimlar button[aria-current=true]{background:var(--t-bead-now);border-color:var(--t-bead-now);width:22px;border-radius:6px;opacity:1}
+.konum-ilerleme{height:3px;background:var(--t-sunk);margin:0 -16px}
+.konum-ilerleme i{display:block;height:100%;width:0;background:var(--t-gold);transition:width .25s}
+.tesbih button:focus-visible,.konum-adimlar button:focus-visible,.konum-bolumler button:focus-visible{outline:2px solid var(--t-accent);outline-offset:2px}
+body:not(.guide-mode) .konum-adimlar,body:not(.guide-mode) .konum-ilerleme{display:none}
+
+/* ---------- Adım ekranı ---------- */
+body.has-konum .step .step-body h3{margin:6px 0 18px!important}
+.adim-ust{display:block;font:500 13px/1.4 system-ui;color:var(--t-gold);margin:18px 0 0}
+
+@media (max-width:720px){
+  .konum{margin:10px -8px 16px;padding:10px 12px 0;border-radius:8px}
+  .konum-ilerleme{margin:0 -12px}
+  .konum-yazi b{font-size:17px}
+  .tesbih button{width:30px;height:30px;margin:0 3px;font-size:12px}
+  .konum-satir{gap:10px}
+  .konum-adimlar{flex-basis:100%}
+  body.has-konum .hero{padding:18px 18px!important;margin-top:12px}
+  body.has-konum .hero p.lede{display:none}
+  .gorunum>summary span{display:none}
+  .gorunum>summary{padding:6px 10px}
+  body.has-konum .step .step-body h3{font-size:24px!important}
+  .guide-nav button{min-height:50px!important;font-size:15px!important}
+  .guide-nav [data-nav=next]{flex:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .tesbih button,.konum-ilerleme i,.anahtar input,.anahtar input::after{transition:none}
+}
+
+/* düzeltmeler */
+html[data-tema] body.home .intro{background:radial-gradient(ellipse at 85% 25%,color-mix(in srgb,var(--t-hero) 70%,#ffffff 12%) 0%,transparent 55%),var(--t-hero);color:var(--t-hero-ink)}
+html[data-tema] body.home .intro h1{color:var(--t-hero-ink)}
+html[data-tema] body.home .intro p,html[data-tema] body.home .intro p.method-note{color:var(--t-hero-muted);border-color:color-mix(in srgb,var(--t-hero-muted) 35%,transparent)}
+html[data-tema] body.home .intro .eyebrow{color:var(--t-hero-muted)}
+.guide-nav button{white-space:nowrap}
+@media (max-width:720px){
+  .gorunum-panel{position:fixed;left:12px;right:12px;width:auto;top:calc(var(--konum-top,64px) + 6px)}
+  .guide-counter{display:none}
+}
+html[data-tema] body.home .card.abdest-home-card{background:var(--t-sunk);border-color:var(--t-line)}
+html[data-tema] body.home .card.abdest-home-card strong{color:var(--t-accent)}
+html[data-tema] body.home .card:not(.abdest-home-card){background:var(--t-surface)}
