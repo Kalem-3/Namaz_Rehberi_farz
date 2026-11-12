@@ -20,8 +20,12 @@ if(panel&&document.querySelector('.recite')){
 }
 yaziUygula(parseInt(oku('namaz_yazi','1'),10)||1);
 const tumBtn=document.querySelector('.guide-toggle');
-if(panel&&tumBtn){const b=document.createElement('button');b.type='button';b.className='panel-tum';const ad=()=>b.textContent=document.body.classList.contains('guide-mode')?'Tüm adımları tek sayfada göster':'Adım adım görünüme dön';ad();
-  b.onclick=()=>{tumBtn.click();ad();panel.closest('details').open=false;};panel.append(b);}
+const satir=document.querySelector('.konum-satir');
+if(tumBtn&&satir){const b=document.createElement('button');b.type='button';b.className='gorunum-degis';
+  const ad=()=>{const adim=document.body.classList.contains('guide-mode');
+    b.innerHTML=adim?'<span class="ikon ikon-liste" aria-hidden="true"></span><span class="uzun">Tüm adımları göster</span><span class="kisa">Tüm adımlar</span>':'<span class="ikon ikon-tek" aria-hidden="true"></span><span class="uzun">Adım adım göster</span><span class="kisa">Adım adım</span>';
+    b.setAttribute('aria-label',adim?'Tüm adımları tek sayfada göster':'Adım adım görünüme dön');b.setAttribute('aria-pressed',String(!adim));};
+  ad();b.onclick=()=>{tumBtn.click();ad();};satir.append(b);}
 
 const steps=[...document.querySelectorAll('.step')];if(!steps.length)return;
 

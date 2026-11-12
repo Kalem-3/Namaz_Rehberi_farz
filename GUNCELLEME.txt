@@ -1,3 +1,18 @@
+FARZ SÜRÜMÜ V4 — ABDEST SAYFASI
+
+- Telefonda abdest sayfasının düzeni düzeltildi. Açıklama yazısı dar bir sütuna sıkışıp kayık görünüyordu; artık fotoğrafın altında tam genişlikte. Detay fotoğrafı yanında açıklamasıyla duruyor. "Tüm adımları birlikte göster" görünür bir düğme oldu.
+- Kol görselleri düzeltildi. Kontrol sırasında şu sorunlar görüldü:
+  · Er görünümünde "Sol kolun yıkanması" adımında da sağ kol yıkanıyordu. Görsel yatay çevrilerek sol kola dönüştürüldü.
+  · Bacı görünümünde sağ ve sol kol görselleri yer değiştirmişti. Yerleri düzeltildi.
+- Etiketler netleşti: Yüz, kollar ve ayaklar için "İlk tam yıkama farz" yerine "1 defa farz · 3 defa sünnet". Boyun meshi için "Âdâb (müstehap)".
+- Abdestin sırası ve açıklamaları Diyanet'in anlatımıyla karşılaştırıldı; başka bir hata bulunmadı.
+- Değişen dosyalar: assets/abdest-erkek.png, assets/abdest-kadin.png, assets/abdest.js, assets/mobil.css
+
+FARZ SÜRÜMÜ V3
+
+- "Tüm adımları göster" düğmesi Görünüm panelinden çıkarıldı. Artık konum çubuğunun sağında, her zaman görünen bir düğme. Basınca bütün adımlar tek sayfada açılır; düğmenin yazısı "Adım adım göster" olur, tekrar basınca adım adım görünüme döner. Telefonda kısa yazıyla ("Tüm adımlar" / "Adım adım") görünür.
+- Değişen dosyalar: assets/mobil.js, assets/mobil.css
+
 FARZ SÜRÜMÜ V2 — TELEFON DÜZENİ VE OKUMA KOLAYLIĞI
 
 Yeni dosyalar: assets/mobil.css ve assets/mobil.js (bütün sayfalara eklendi).
