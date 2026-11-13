@@ -1,3 +1,17 @@
+V3.4 / V5.2 — ARAPÇA OKUNUŞLAR SESLİ (ER VE BACI)
+- Her dua kartında artık iki "Dinle" düğmesi var: "Okunuşu" yanında Arapça okunuş,
+  "Anlamı" yanında Türkçe anlam. Er görünümünde er sesi, Bacı görünümünde bacı sesi çalar.
+- "Sırayla dinle" düğmesi o adımdaki duaların okunuşlarını arka arkaya çalar.
+- Dua hapları (1. Sübhâneke, 2. Eûzü–Besmele ...) dokununca okunuşu çalar ve karta gider.
+- Sure ve Dualar sayfasında da aynı düğmeler var; Er/Bacı seçimine göre çalar.
+- Rükû, secde gibi adımlardaki kısa "Allâhü ekber" satırında okunuş ve anlam düğmesi var.
+- Çalan bölüm (okunuş ya da anlam) sarıyla vurgulanır.
+- 15 dua × 2 ses = 30 Arapça kayıt eklendi (64 kbps mono, toplam 2 MB).
+  Dosyalar: assets/ses/okunus/er/ ve assets/ses/okunus/baci/.
+- Telefon için: sayfa açılırken hiçbir ses indirilmez, dosya yoklaması da yapılmaz;
+  her kayıt yalnızca düğmeye basılınca yüklenir. Hangi kayıtların olduğu
+  assets/veri.js içindeki OKUNUS_SESLERI ve ANLAM_SESLERI listelerinde yazılı.
+
 V3.3 / V5.1 — ANLAMLARIN SESLİ OKUNUŞU
 - Her dua kartında "Anlamı" başlığının yanında "Dinle" düğmesi var. Er görünümünde er sesi,
   Bacı görünümünde bacı sesi çalar. Çalan anlam sarıyla vurgulanır, düğmede ilerleme dolar.

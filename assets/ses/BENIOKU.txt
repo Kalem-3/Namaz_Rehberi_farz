@@ -1,33 +1,30 @@
 SES DOSYALARI
 
-Bu klasöre aşağıdaki adlarla MP3 dosyaları koyun. Dosya eklendiği anda o duanın
-yanında ▶ düğmesi kendiliğinden görünür; dosya yoksa düğme gizli kalır.
+Klasörler
+  okunus/er/     Arapça okunuş — Er görünümünde çalar
+  okunus/baci/   Arapça okunuş — Bacı görünümünde çalar
+  anlam/er/      Türkçe anlam  — Er görünümünde çalar
+  anlam/baci/    Türkçe anlam  — Bacı görünümünde çalar
 
+Her klasörde aynı 15 dosya adı kullanılır:
   tekbir.mp3          Allâhü ekber
   subhaneke.mp3       Sübhâneke
-  euzu-besmele.mp3    Eûzü billâhi... Bismillâhir-rahmânir-rahîm
-  besmele.mp3         Bismillâhir-rahmânir-rahîm (2. rekât ve abdest başı)
-  fatiha.mp3          Fâtiha — sonunda "Âmîn" de kayda alınabilir
-  ihlas.mp3           İhlâs sûresi
-  ruku.mp3            Sübhâne rabbiyel azîm (3 kere)
+  euzu-besmele.mp3    Eûzü–Besmele
+  besmele.mp3         Besmele
+  fatiha.mp3          Fâtiha
+  ihlas.mp3           İhlâs
+  ruku.mp3            Rükû tesbihi
   kavme.mp3           Semi'allâhü limen hamideh — Rabbenâ lekel hamd
-  secde.mp3           Sübhâne rabbiyel a'lâ (3 kere)
+  secde.mp3           Secde tesbihi
   ettehiyyatu.mp3     Ettehiyyâtü
   salli.mp3           Allâhümme salli
   barik.mp3           Allâhümme bârik
   rabbena-atina.mp3   Rabbenâ âtinâ
   rabbenagfirli.mp3   Rabbenâğfirlî
-  selam.mp3           Esselâmü aleyküm ve rahmetullâh
+  selam.mp3           Selâm
 
-Öneriler: mono, 64–96 kbps MP3 yeterlidir. Kaydın başında ve sonunda uzun sessizlik
-bırakmayın. Kayıtları güvendiğiniz bir hocadan/imamdan alın; başkasına ait kayıtları
-kullanmadan önce izin alın.
-
-ANLAMLAR (TÜRKÇE OKUNUŞ)
-
-Anlamların sesli okunuşu ayrı klasörlerdedir:
-  anlam/er/<ad>.mp3     Er görünümünde çalar
-  anlam/baci/<ad>.mp3   Bacı görünümünde çalar
-Adlar yukarıdaki listeyle aynıdır (fatiha.mp3, subhaneke.mp3 ...). Bir görünümün kaydı
-yoksa diğerininki çalar. Yeni bir anlam kaydı eklerseniz adını assets/veri.js içindeki
-ANLAM_SESLERI listesine de yazın.
+Bir görünümün kaydı yoksa diğer görünümünki çalar.
+Kayıt değiştirmek için dosyayı aynı adla değiştirmeniz yeterli.
+YENİ bir kayıt eklerseniz adını assets/veri.js içindeki OKUNUS_SESLERI veya
+ANLAM_SESLERI listesine de yazın; sayfa telefonu yormamak için dosyaları yoklamaz.
+Öneri: mono, 64 kbps MP3.

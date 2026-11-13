@@ -295,8 +295,13 @@ const KAYNAKLAR = [
 ];
 const KAYNAK_NOTU = "Kur'an-ı Kerim âyetlerinin Türkçe meali Prof. Dr. Ömer Çelik mealinden alınmıştır. Sübhâneke, Ettehiyyâtü, Salli–Bârik ve Rabbenâ dualarının Arapça metni ve anlamı Millî Eğitim Bakanlığı'nın “Namaz Duaları ve Sureleri” kaynağına dayanmaktadır. Kadın–erkek duruş farkları Diyanet İşleri Başkanlığı'nın resmî açıklamasından alınmıştır.";
 
-/* Anlamların sesli okunuşu: assets/ses/anlam/er/<ad>.mp3 ve assets/ses/anlam/baci/<ad>.mp3.
+/* Ses kayıtları — Er görünümünde er sesi, Bacı görünümünde bacı sesi çalar.
+   Okunuş (Arapça): assets/ses/okunus/er|baci/<ad>.mp3 · Anlam (Türkçe): assets/ses/anlam/er|baci/<ad>.mp3
    Yeni kayıt eklenirse adını buraya da yazın (sayfa açılırken ses dosyası yoklanmaz). */
+const OKUNUS_SESLERI = {
+  er: ['tekbir', 'subhaneke', 'euzu-besmele', 'besmele', 'fatiha', 'ihlas', 'ruku', 'kavme', 'secde', 'ettehiyyatu', 'salli', 'barik', 'rabbena-atina', 'rabbenagfirli', 'selam'],
+  baci: ['tekbir', 'subhaneke', 'euzu-besmele', 'besmele', 'fatiha', 'ihlas', 'ruku', 'kavme', 'secde', 'ettehiyyatu', 'salli', 'barik', 'rabbena-atina', 'rabbenagfirli', 'selam']
+};
 const ANLAM_SESLERI = {
   er: ['tekbir', 'subhaneke', 'euzu-besmele', 'besmele', 'fatiha', 'ihlas', 'ruku', 'kavme', 'secde', 'ettehiyyatu', 'salli', 'barik', 'rabbena-atina', 'rabbenagfirli', 'selam'],
   baci: ['tekbir', 'subhaneke', 'euzu-besmele', 'besmele', 'fatiha', 'ihlas', 'ruku', 'kavme', 'secde', 'ettehiyyatu', 'salli', 'barik', 'rabbena-atina', 'rabbenagfirli', 'selam']
@@ -305,5 +310,5 @@ const ANLAM_SESLERI = {
 /* Dualar sayfasındaki sıra */
 const DUA_SIRASI = ['subhaneke', 'euzu', 'fatiha', 'ihlas', 'ruku', 'kavme', 'secde', 'ettehiyyatu', 'salli', 'barik', 'rabbena', 'rabbenagfirli', 'selam', 'tekbir', 'besmele'];
 
-return { DUALAR, VAKITLER, foto, yakinlar, ABDEST, ABDEST_GIRIS, ABDEST_FARZ, KAYNAKLAR, KAYNAK_NOTU, DUA_SIRASI, ANLAM_SESLERI };
+return { DUALAR, VAKITLER, foto, yakinlar, ABDEST, ABDEST_GIRIS, ABDEST_FARZ, KAYNAKLAR, KAYNAK_NOTU, DUA_SIRASI, OKUNUS_SESLERI, ANLAM_SESLERI };
 })();

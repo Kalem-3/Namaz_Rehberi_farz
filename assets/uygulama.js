@@ -52,26 +52,13 @@ ayarUygula();
 const cinsAdi = () => A.cins === 'kadin' ? 'Bacı' : 'Er';
 
 /* ---------- Ses ----------
-   Kayıtlar assets/ses/<ad>.mp3 dosyalarından okunur. Kaydı bulunmayan duanın ses düğmesi gizli kalır. */
+   Tek bir ses çalar kullanılır; dosya yalnızca düğmeye basılınca indirilir.
+   Hangi kaydın var olduğu veri.js'teki OKUNUS_SESLERI / ANLAM_SESLERI listelerinde yazılıdır. */
 const Ses = (() => {
   const el = new Audio();
-  el.preload = 'auto';
-  const yoklama = {};
+  el.preload = 'none';
   let aktif = null, kuyruk = [];
   const yol = k => `assets/ses/${k}.mp3`;
-  function var_(k) {
-    if (!yoklama[k]) yoklama[k] = new Promise(res => {
-      const a = new Audio();
-      let bitti = false;
-      const bit = v => { if (bitti) return; bitti = true; a.removeAttribute('src'); a.load(); res(v); };
-      a.preload = 'metadata';
-      a.onloadedmetadata = () => bit(true);
-      a.onerror = () => bit(false);
-      a.src = yol(k);
-      setTimeout(() => bit(false), 15000);
-    });
-    return yoklama[k];
-  }
   function baslat(k) { aktif = k; el.src = yol(k); el.play().catch(() => {}); guncelle(); }
   function cal(k, sonrakiler = []) {
     if (aktif === k && el.src) { el.paused ? el.play() : el.pause(); return; }
@@ -80,23 +67,26 @@ const Ses = (() => {
   }
   function dur() { el.pause(); aktif = null; kuyruk = []; guncelle(); }
   function guncelle() {
+    const calis = !!aktif && !el.paused;
     $$('[data-ses]').forEach(b => {
       const on = b.dataset.ses === aktif;
-      b.classList.toggle('caliyor', on && !el.paused);
-      b.setAttribute('aria-pressed', String(on && !el.paused));
+      b.classList.toggle('caliyor', on && calis);
+      b.setAttribute('aria-pressed', String(on && calis));
       if (!on) b.style.setProperty('--p', '0%');
-      if (b.matches('.anlam-dinle') && b.querySelector('span')) b.querySelector('span').textContent = on && !el.paused ? 'Durdur' : 'Dinle';
+      if (b.matches('.dinle') && b.querySelector('span')) b.querySelector('span').textContent = on && calis ? 'Durdur' : 'Dinle';
     });
-    $$('[data-ses-hap]').forEach(b => b.closest('.hap').classList.toggle('caliyor', b.dataset.sesHap === aktif && !el.paused));
+    $$('[data-ses-hap]').forEach(b => b.closest('.hap').classList.toggle('caliyor', calis && b.dataset.sesHap === aktif));
     $$('[data-ses-hepsi]').forEach(b => {
-      const on = !!aktif && !el.paused && b.dataset.sesHepsi.split(',').includes(aktif) && (kuyruk.length > 0 || b.dataset.sesHepsi.split(',').pop() === aktif);
+      const liste = b.dataset.sesHepsi.split(',');
+      const on = calis && liste.includes(aktif) && (kuyruk.length > 0 || liste[liste.length - 1] === aktif);
       b.classList.toggle('caliyor', on);
       b.querySelector('span').textContent = on ? 'Durdur' : 'Sırayla dinle';
     });
-    const calis = !!aktif && !el.paused;
     $$('.dua').forEach(k => {
-      const anlam = calis && aktif === anlamYolu(k.dataset.dua);
-      k.classList.toggle('okunuyor', anlam || (calis && k.dataset.dua === aktif));
+      const okunus = calis && aktif === sesYolu('okunus', k.dataset.dua);
+      const anlam = calis && aktif === sesYolu('anlam', k.dataset.dua);
+      k.classList.toggle('okunuyor', okunus || anlam);
+      k.querySelector('.okunus')?.classList.toggle('okunuyor', okunus);
       k.querySelector('.anlam')?.classList.toggle('okunuyor', anlam);
     });
   }
@@ -110,20 +100,7 @@ const Ses = (() => {
     const p = el.duration ? (el.currentTime / el.duration * 100) : 0;
     $$(`[data-ses="${aktif}"]`).forEach(b => b.style.setProperty('--p', p + '%'));
   });
-  /* Ekrandaki ses düğmelerini, kaydı varsa görünür yapar */
-  function hazirla(kap) {
-    $$('[data-ses]:not([data-ses-hazir])', kap).forEach(b => var_(b.dataset.ses).then(ok => { b.hidden = !ok; }));
-    $$('[data-ses-hap]', kap).forEach(b => var_(b.dataset.sesHap).then(ok => b.closest('.hap').classList.toggle('sesli', ok)));
-    $$('[data-ses-hepsi]', kap).forEach(b => {
-      const liste = b.dataset.sesHepsi.split(',');
-      Promise.all(liste.map(var_)).then(oklar => {
-        const var_olan = liste.filter((_, i) => oklar[i]);
-        b.dataset.sesHepsi = var_olan.join(',');
-        b.hidden = var_olan.length < 2;
-      });
-    });
-    guncelle();
-  }
+  function hazirla() { guncelle(); }
   function hepsi(liste) {
     if (aktif && liste.includes(aktif) && !el.paused) { dur(); return; }
     cal(liste[0], liste.slice(1));
@@ -145,17 +122,19 @@ function ustCubuk({ geri, ust, alt, ayar = true }) {
     <div class="ust-sag">${cinsSecici(true)}${ayar ? `<button type="button" class="yuvarlak aa" data-ac="ayarlar" aria-label="Görünüm ayarları">Aa</button>` : ''}</div>
   </header>`;
 }
-/* Anlamın sesli okunuşu: Er görünümünde er sesi, Bacı görünümünde bacı sesi; biri yoksa diğeri */
-function anlamYolu(k) {
-  const L = R.ANLAM_SESLERI || {};
+/* Kaydın yolu: tur 'okunus' (Arapça) ya da 'anlam' (Türkçe).
+   Er görünümünde er sesi, Bacı görünümünde bacı sesi; biri yoksa diğeri, ikisi de yoksa null. */
+function sesYolu(tur, k) {
+  const L = (tur === 'okunus' ? R.OKUNUS_SESLERI : R.ANLAM_SESLERI) || {};
   const sira = A.cins === 'kadin' ? ['baci', 'er'] : ['er', 'baci'];
   const c = sira.find(x => (L[x] || []).includes(k));
-  return c ? `anlam/${c}/${k}` : null;
+  return c ? `${tur}/${c}/${k}` : null;
 }
-function anlamDugmesi(k, kisa = false) {
-  const yol = anlamYolu(k);
+function dinleDugmesi(tur, k, kisa = false) {
+  const yol = sesYolu(tur, k);
   if (!yol) return '';
-  return `<button type="button" class="anlam-dinle ${kisa ? 'kisa' : ''}" data-ses="${yol}" data-ses-hazir aria-label="Anlamını dinle">${I.oynat}${I.durdur}${kisa ? '' : '<span>Dinle</span>'}</button>`;
+  const ne = tur === 'okunus' ? 'Okunuşunu' : 'Anlamını';
+  return `<button type="button" class="dinle ${kisa ? 'kisa' : ''}" data-ses="${yol}" aria-label="${ne} dinle">${I.oynat}${I.durdur}${kisa ? '' : '<span>Dinle</span>'}</button>`;
 }
 function satirlar(dizi, cls) { return dizi.map(s => `<span class="${cls}">${esc(s)}</span>`).join(''); }
 
@@ -171,10 +150,9 @@ function duaKarti(k) {
     <header class="dua-bas">
       <h3>${esc(d.ad)}</h3>
       ${d.tekrar ? `<span class="rozet">${esc(d.tekrar)}</span>` : ''}
-      <button type="button" class="ses-dugme" data-ses="${d.ses}" hidden aria-label="${esc(d.ad)} — dinle">${I.oynat}${I.durdur}</button>
     </header>
-    <div class="okunus"><small class="dua-etiket">Okunuşu</small>${satirlar(d.ok, 'okunus-satir')}</div>
-    <div class="anlam"><div class="anlam-ust"><small class="dua-etiket">Anlamı</small>${anlamDugmesi(d.ses)}</div>${satirlar(d.an, 'anlam-satir')}${d.kaynak ? `<small class="kaynak">${esc(d.kaynak)}</small>` : ''}</div>
+    <div class="okunus"><div class="etiket-satir"><small class="dua-etiket">Okunuşu</small>${dinleDugmesi('okunus', d.ses)}</div>${satirlar(d.ok, 'okunus-satir')}</div>
+    <div class="anlam"><div class="etiket-satir"><small class="dua-etiket">Anlamı</small>${dinleDugmesi('anlam', d.ses)}</div>${satirlar(d.an, 'anlam-satir')}${d.kaynak ? `<small class="kaynak">${esc(d.kaynak)}</small>` : ''}</div>
     <div class="arapca"><small class="dua-etiket">Arapçası</small><div lang="ar" dir="rtl">${satirlar(d.ar, 'arapca-satir')}</div></div>
     ${amin}
     ${d.not ? `<p class="dua-not">${esc(d.not)}</p>` : ''}
@@ -183,20 +161,24 @@ function duaKarti(k) {
 function kisaSoz(k) {
   const d = R.DUALAR[k];
   return `<div class="kisa-soz">
-    <button type="button" class="kisa-oynat" hidden data-ses="${d.ses}" aria-label="${esc(d.ok[0])} — dinle">${I.oynat}${I.durdur}</button>
-    <div><b>${esc(d.ok.join(' '))}</b><span class="kisa-anlam">${esc(d.an.join(' '))}${anlamDugmesi(k, true)}</span></div>
+    <div><b class="kisa-okunus">${esc(d.ok.join(' '))}${dinleDugmesi('okunus', k, true)}</b><span class="kisa-anlam">${esc(d.an.join(' '))}${dinleDugmesi('anlam', k, true)}</span></div>
     <span class="kisa-ar" lang="ar" dir="rtl">${d.ar.join(' ')}</span>
   </div>`;
+}
+/* Dua hapı: dokununca karta gider; okunuş kaydı varsa çalar */
+function hap(k) {
+  const yol = sesYolu('okunus', R.DUALAR[k].ses);
+  return `<span class="hap ${yol ? 'sesli' : ''}" role="listitem"><button type="button" data-git="dua-${k}" ${yol ? `data-ses-hap="${yol}"` : ''}>`;
 }
 function soyleBolumu(dualar, { duaYok, kisaTekbir = true } = {}) {
   const tam = dualar.filter(k => !(kisaTekbir && k === 'tekbir'));
   if (!tam.length) return duaYok ? `<section class="soyle"><h2 class="bolum-baslik">Ne söylüyorum?</h2><p class="bos-not">${esc(duaYok)}</p></section>` : '';
-  const sesler = tam.map(k => R.DUALAR[k].ses);
+  const sesler = tam.map(k => sesYolu('okunus', R.DUALAR[k].ses)).filter(Boolean);
   return `<section class="soyle">
     <div class="bolum-ust"><h2 class="bolum-baslik">Ne söylüyorum?</h2>
-      ${tam.length > 1 ? `<button type="button" class="hepsini-dinle" data-ses-hepsi="${sesler.join(',')}" hidden>${I.kulak}<span>Sırayla dinle</span></button>` : ''}
+      ${tam.length > 1 ? `<button type="button" class="hepsini-dinle" data-ses-hepsi="${sesler.join(',')}" ${sesler.length < 2 ? 'hidden' : ''}>${I.kulak}<span>Sırayla dinle</span></button>` : ''}
     </div>
-    ${tam.length > 1 ? `<div class="hap-satir" role="list">${tam.map((k, i) => `<span class="hap" role="listitem"><button type="button" data-git="dua-${k}" data-ses-hap="${R.DUALAR[k].ses}"><i>${I.oynat}</i>${i + 1}. ${esc(R.DUALAR[k].ad)}</button></span>`).join('')}</div>` : ''}
+    ${tam.length > 1 ? `<div class="hap-satir" role="list">${tam.map((k, i) => `${hap(k)}<i>${I.oynat}</i>${i + 1}. ${esc(R.DUALAR[k].ad)}</button></span>`).join('')}</div>` : ''}
     ${tam.map(k => duaKarti(k)).join('')}
   </section>`;
 }
@@ -412,7 +394,7 @@ function dualarSayfasi() {
   return `<main class="ekran" id="icerik">
     ${ustCubuk({ geri: '#/', ust: 'Namaz Rehberi', alt: '' })}
     <div class="giris-bas"><h1 class="dev-baslik">Sure ve Dualar</h1><p class="altin-alt">Namazda okunanlar · okunuş, anlam ve ses</p></div>
-    <div class="hap-satir yapiskan" role="list">${R.DUA_SIRASI.map(k => `<span class="hap" role="listitem"><button type="button" data-git="dua-${k}" data-ses-hap="${R.DUALAR[k].ses}"><i>${I.oynat}</i>${esc(R.DUALAR[k].ad)}</button></span>`).join('')}</div>
+    <div class="hap-satir yapiskan" role="list">${R.DUA_SIRASI.map(k => `${hap(k)}<i>${I.oynat}</i>${esc(R.DUALAR[k].ad)}</button></span>`).join('')}</div>
     ${R.DUA_SIRASI.map(k => duaKarti(k)).join('')}
   </main>`;
 }
