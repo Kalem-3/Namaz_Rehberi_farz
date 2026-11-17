@@ -1,3 +1,15 @@
+GÜNCELLEME — BAŞTAN BAŞLAMA, KAYNAKLAR, OTURUŞ AYAK GÖRSELLERİ
+
+- "Kaldığınız yerden devam edin" kaldırıldı. Uygulama her açılışta ana sayfadan başlar. Eski "kaldığı yer" kayıtları telefondan silinir. Adres bir adımı gösterse bile (sekme yeniden açıldığında ya da sayfa yenilendiğinde) ana sayfa açılır.
+  Tema, Er/Bacı seçimi, yazı boyutu ve Arapça ayarı hatırlanmaya devam eder.
+- Kaynaklar sayfası:
+  · İslam ve İhsan'ın erler ve bacılar için namaz kılınışı video listeleri eklendi.
+  · Diyanet İşleri Başkanlığı'nın namaz portalı (namaz.diyanet.gov.tr) ve Namaz İlmihali (PDF) eklendi.
+  · Diyanet Haber bağlantısı çıkarıldı; yalnızca Diyanet'in kendi sayfaları kaldı (diyanet.gov.tr ve kurul.diyanet.gov.tr).
+  · Kaynak notuna "Er ve bacı duruş fotoğrafları, İslam ve İhsan kanalının namaz kılınışı videolarından alınmıştır." cümlesi eklendi.
+- Oturuş ve celse ayak görselleri (Er) aydınlatıldı. Karanlıkta kalan çorap ve ayaklar açıldı; sağ ayağın dikliği ve sol ayağın yatıklığı artık seçiliyor. Renk değiştirilmedi; yalnızca gölgeler açıldı ve hafif netlik verildi.
+- Değişen dosyalar: assets/uygulama.js, assets/veri.js ve Er oturuş/celse ayak fotoğrafları.
+
 V3.4 / V5.2 — ARAPÇA OKUNUŞLAR SESLİ (ER VE BACI)
 - Her dua kartında artık iki "Dinle" düğmesi var: "Okunuşu" yanında Arapça okunuş,
   "Anlamı" yanında Türkçe anlam. Er görünümünde er sesi, Bacı görünümünde bacı sesi çalar.

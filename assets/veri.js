@@ -286,14 +286,17 @@ const ABDEST_GIRIS = 'Kolları dirseklerin üstüne kadar sıvayın. Suyun deriy
 const ABDEST_FARZ = 'Abdestte yüzü, dirseklerle birlikte iki kolu ve aşık kemikleriyle birlikte iki ayağı birer defa yıkamak; başın en az dörtte birini mesh etmek farzdır. Yıkanacak uzuvların üçer defa yıkanması sünnettir; mesh bir defa yapılır. Yıkama, suyun uzva ulaştırılmasıdır; mesh ise ıslak elle silmektir.';
 
 const KAYNAKLAR = [
+  ['İslam ve İhsan — Erler için namazın kılınışı (video listesi)', 'https://www.youtube.com/watch?v=o_Pln7TKyTQ&list=PL18zFy6BUOQhRmTNqTemQJim4cczAhAl8'],
+  ['İslam ve İhsan — Bacılar için namazın kılınışı (video listesi)', 'https://www.youtube.com/watch?v=BWBVl1rGwNU&list=PL18zFy6BUOQg57AISQmNlFw1r5YOdC2TK'],
+  ['Diyanet İşleri Başkanlığı — Namaz portalı', 'https://namaz.diyanet.gov.tr/'],
+  ['Diyanet İşleri Başkanlığı — Namaz İlmihali (PDF)', 'https://namaz.diyanet.gov.tr/namaz/html/kutuphane/HTML/NamazIlmihali/assets/common/downloads/publication.pdf'],
   ['Din İşleri Yüksek Kurulu — Abdestin alınışı', 'https://kurul.diyanet.gov.tr/tr/fetva/abdest-nedir-ve-nasil-alinir/0193c42d-4493-7cd5-0d48-874d6be1a7d3'],
-  ['Diyanet Haber — Abdestle ilgili bilgiler', 'https://www.diyanethaber.com.tr/abdest-ile-ilgili-bilinmesi-gerekenler'],
   ['Din İşleri Yüksek Kurulu — Başörtüsü ve mesh', 'https://kurul.diyanet.gov.tr/tr/video/abdest-alirken-basortusunun-uzerinden-bas-mesh-edilebilir-mi/019d0027-3362-7114-ad16-483fffece9e6'],
-  ['Diyanet — Er ve bacı duruşları', 'https://kurul.diyanet.gov.tr/tr/fetva/kilinis-bakimindan-kadinlarin-namazi-ile-erkeklerin-namazi-arasinda-ne-gibi-farklar-bulunmaktadir/0193c42d-64a5-7ba1-9af3-f9f4a7f97245'],
-  ['Diyanet — Namazda besmele', 'https://kurul.diyanet.gov.tr/tr/fetva/namazda-fatihadan-sonra-okunacak-ayet-veya-sureler-icin-besmele-cekilir-mi/0193c42d-4fd1-7daa-1cd8-e3e31c2535c1'],
-  ['Diyanet — Secdede ayakların yerleşimi', 'https://www.diyanet.gov.tr/icerik/10151']
+  ['Din İşleri Yüksek Kurulu — Er ve bacı duruşları', 'https://kurul.diyanet.gov.tr/tr/fetva/kilinis-bakimindan-kadinlarin-namazi-ile-erkeklerin-namazi-arasinda-ne-gibi-farklar-bulunmaktadir/0193c42d-64a5-7ba1-9af3-f9f4a7f97245'],
+  ['Din İşleri Yüksek Kurulu — Namazda besmele', 'https://kurul.diyanet.gov.tr/tr/fetva/namazda-fatihadan-sonra-okunacak-ayet-veya-sureler-icin-besmele-cekilir-mi/0193c42d-4fd1-7daa-1cd8-e3e31c2535c1'],
+  ['Diyanet İşleri Başkanlığı — Secdede ayakların yerleşimi', 'https://www.diyanet.gov.tr/icerik/10151']
 ];
-const KAYNAK_NOTU = "Kur'an-ı Kerim âyetlerinin Türkçe meali Prof. Dr. Ömer Çelik mealinden alınmıştır. Sübhâneke, Ettehiyyâtü, Salli–Bârik ve Rabbenâ dualarının Arapça metni ve anlamı Millî Eğitim Bakanlığı'nın “Namaz Duaları ve Sureleri” kaynağına dayanmaktadır. Kadın–erkek duruş farkları Diyanet İşleri Başkanlığı'nın resmî açıklamasından alınmıştır.";
+const KAYNAK_NOTU = "Kur'an-ı Kerim âyetlerinin Türkçe meali Prof. Dr. Ömer Çelik mealinden alınmıştır. Sübhâneke, Ettehiyyâtü, Salli–Bârik ve Rabbenâ dualarının Arapça metni ve anlamı Millî Eğitim Bakanlığı'nın “Namaz Duaları ve Sureleri” kaynağına dayanmaktadır. Kadın–erkek duruş farkları Diyanet İşleri Başkanlığı'nın resmî açıklamasından alınmıştır. Er ve bacı duruş fotoğrafları, İslam ve İhsan kanalının namaz kılınışı videolarından alınmıştır.";
 
 /* Ses kayıtları — Er görünümünde er sesi, Bacı görünümünde bacı sesi çalar.
    Okunuş (Arapça): assets/ses/okunus/er|baci/<ad>.mp3 · Anlam (Türkçe): assets/ses/anlam/er|baci/<ad>.mp3

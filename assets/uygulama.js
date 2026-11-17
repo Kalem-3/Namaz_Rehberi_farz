@@ -207,13 +207,8 @@ function vakitKartlari() {
 
 /* ---------- Ekranlar ---------- */
 function anaSayfa() {
-  const devam = (() => {
-    const son = oku('namaz_son', '');
-    const ak = akis(son);
-    const n = parseInt(oku('namaz_son_' + son, ''), 10);
-    if (!ak || !(n > 0) || !ak.liste[n]) return null;
-    return { href: `#/${son}/${n + 1}`, ad: ak.ad, adim: `Adım ${n + 1} / ${ak.liste.length} · ${ak.liste[n].ad}` };
-  })();
+  /* Kaldığı yerden devam özelliği kaldırıldı: ana sayfa her zaman baştan başlar. */
+  const devam = null;
   return `<main class="ekran ana" id="icerik">
     <header class="ana-bas">
       <div><h1 class="dev-baslik">Namaz Rehberi</h1><p class="altin-alt">Adım Adım Öğrenin</p></div>
@@ -504,11 +499,8 @@ function ciz(animasyon = true) {
     hedef?.classList.add('gir-' + yon);
   }
   if (r.i !== undefined) {
-    yaz('namaz_son', r.tur);
-    yaz('namaz_son_' + r.tur, String(r.i));
     onPreload(r.tur, r.i + 1);
   }
-  if (r.bitti) { yaz('namaz_son', ''); }
   onceki = { tur: r.tur, i: r.i ?? -1 };
   Ses.hazirla(app);
   if (animasyon) {
@@ -606,5 +598,8 @@ app.addEventListener('touchend', e => {
   else { const g = $('.alt-cubuk .yuvarlak'); if (g && !g.classList.contains('pasif')) g.click(); }
 }, { passive: true });
 
+/* Her açılışta baştan: eski "kaldığı yer" kayıtları silinir; adres bir adımı gösteriyorsa ana sayfa açılır. */
+try { Object.keys(localStorage).filter(k => k.startsWith('namaz_son')).forEach(k => localStorage.removeItem(k)); } catch (e) {}
+if (/^#\/?[a-z]+\/(\d+|bitti)/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search + '#/');
 ciz();
 })();
